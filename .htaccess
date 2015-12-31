@@ -1,0 +1,10 @@
+ErrorDocument 404/ /404.shtml
+RewriteEngine on
+Options All -Indexes
+RewriteRule ^404/?$ 404.php [L]
+RewriteRule ^index/?$ index.php [L]
+RewriteRule ^fasilitas/?$ fasilitas.php [L]
+RewriteRule ^profile/?$ profile.php [L]
+RewriteRule ^maps/?$ maps.php [L]
+RewriteRule ^([A-Za-z0-9_-]+)?$ index.php?pages=$1 [L]
+RewriteRule ^sitemap.xml?$ index.php?page=sitemap.xml [L]
