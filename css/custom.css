@@ -123,6 +123,22 @@ a{
     -webkit-animation:pulse 1s ease-in-out 100ms both;
     -o-animation:pulse 1s ease-in-out 100ms both;
 }
+.feature_title_success{
+    position:relative;
+    padding-bottom:10px;
+    color:#27AE60!important;
+    width: 45%;
+    margin: 10px auto;
+    font-size: 40px;
+    line-height: 50px;
+    text-transform:uppercase;
+}
+.feature_title_success:hover{
+    cursor: pointer;
+    animation: pulse 1s ease-in-out 100ms both;
+    -webkit-animation:pulse 1s ease-in-out 100ms both;
+    -o-animation:pulse 1s ease-in-out 100ms both;
+}
 .feature_sub{
     color:#000;
     font-size: 18px;
@@ -1695,22 +1711,22 @@ padding: 8px 15px;
 /*map*/
 
 .form-level ::-webkit-input-placeholder {
-   color: #555;
+   color: #dfdfdf;
    text-transform: capitalize;
 }
 
 .form-level :-moz-placeholder { /* Firefox 18- */
-   color: #555;  
+   color: #dfdfdf;  
    text-transform: capitalize;
 }
 
 .form-level ::-moz-placeholder {  /* Firefox 19+ */
-   color: #555;  
+   color: #dfdfdf;  
    text-transform: capitalize;
 }
 
 .form-level :-ms-input-placeholder {  
-   color: #555;  
+   color: #dfdfdf;  
    text-transform: capitalize;
 }
 /* Footer Area
@@ -2626,4 +2642,64 @@ iframe{
     background: #EE3B24;
     right: 10px;
     top: -10px;
+}
+
+.form-level-login {
+    position: relative;
+}
+
+.form-level-login input {
+    width: 40%;
+    padding: 10px 15px;
+    border: 1px solid #EEE;
+    margin-bottom: 10px;
+}
+
+.form-level-login  span {
+    width: 50px;
+    font-size: 20px;
+    padding-left: 17px;
+    height: 47px;
+    position: absolute;
+    color: #888;
+}
+/*map*/
+
+.form-level-login ::-webkit-input-placeholder {
+    color: #888;
+    text-transform: capitalize;
+}
+
+.form-level-login :-moz-placeholder {
+ /* Firefox 18- */
+    color: #888;
+    text-transform: capitalize;
+}
+
+.form-level-login ::-moz-placeholder {
+  /* Firefox 19+ */
+    color: #888;
+    text-transform: capitalize;
+}
+
+.form-level-login :-ms-input-placeholder {
+    color: #888;
+    text-transform: capitalize;
+}
+.form-icon-login {
+    position: absolute;
+    right: 355px;
+    color: #DDD;
+    top: 10px;
+}
+
+.h3custom {
+    font-size: 18px;
+}
+.clearbr {
+    height: 100px;
+}
+
+.nomargin {
+    margin-top: -30px;
 }

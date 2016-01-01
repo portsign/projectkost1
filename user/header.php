@@ -1,5 +1,5 @@
 <?php 
-include('Config/Database.php'); ?>
+include('../Config/Database.php'); ?>
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -24,4 +24,4 @@ include('Config/Database.php'); ?>
 
 <body data-spy="scroll" data-target=".navbar-fixed-top">
     <header id="section_header" class="navbar-fixed-top main-nav" role="banner">
-    	<div class="container">
+        <div class="container">

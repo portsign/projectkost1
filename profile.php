@@ -13,7 +13,7 @@ include('navbar.php');
                     </div>
                     <div class="col-md-8">
                         <div class="feature_header">
-                            <h3><b>Fasilitas</b> Kami</h3>
+                            <h3><b>Tentang</b> Kami</h3>
                             <h4 class="feature_sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Iusto provident non voluptatibus animi quidem incidunt eum, eligendi doloribus dicta.</h4>
                             <div class="divider"></div>
                         </div>

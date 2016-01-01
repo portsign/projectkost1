@@ -15,8 +15,7 @@ include('navbar.php');
                             </div>
                         </div>
                     </div>
-                </div>
-               
+                </div> 
         </div>  <!-- Container End -->
     </section>
     <br /><br /><br />

@@ -1829,6 +1829,55 @@ textarea:hover {
     color: #555;
     text-transform: capitalize;
 }
+
+
+/*LOGIN*/
+
+.form-level-login {
+    position: relative;
+}
+
+.form-level-login input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #EEE;
+    margin-bottom: 10px;
+}
+
+.form-level-login  span {
+    width: 50px;
+    font-size: 20px;
+    padding-left: 17px;
+    height: 47px;
+    position: absolute;
+    color: #888;
+}
+/*map*/
+
+.form-level-login ::-webkit-input-placeholder {
+    color: #555;
+    text-transform: capitalize;
+}
+
+.form-level-login :-moz-placeholder {
+ /* Firefox 18- */
+    color: #555;
+    text-transform: capitalize;
+}
+
+.form-level-login ::-moz-placeholder {
+  /* Firefox 19+ */
+    color: #555;
+    text-transform: capitalize;
+}
+
+.form-level-login :-ms-input-placeholder {
+    color: #555;
+    text-transform: capitalize;
+}
+
+/*LOGIN END*/
+
 /* Footer Area
 ==========================================*/
 #footer {
