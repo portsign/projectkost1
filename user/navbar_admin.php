@@ -14,8 +14,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style="margin-top:10px;" href="#">
-                        Member Area
+                    <a class="navbar-brand" href="#">
+                        <i class="glyphicon glyphicon-user"></i> Member Area
                     </a>
              </div><!--Navbar header End-->
                 <nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1" role="navigation">
