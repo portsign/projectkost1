@@ -7,13 +7,16 @@ include('navbar_admin.php'); ?>
 
 <?php 
 	$getAnggota = mysqli_query($connecDB, "SELECT * FROM member ORDER BY id_member DESC");
+	$n = 1;
 	while($m = mysqli_fetch_array($getAnggota)) {
 ?>
 <!-- LOOP HERE -->
+
+
 <div class="container" style="margin-top: 10px;">
 	<div class="panel">
 		<div class="col-md-4 bg_blur ">
-    	    <a href="#" class="follow_btn hidden-xs">See Detail</a>
+    	    <a href="" class="follow_btn hidden-xs" data-toggle="modal" data-target=".bs-example-modal-lg<?php echo $n; ?>">See Detail</a>
 		</div>
         <div class="col-md-8  col-xs-12">
            <img src="<?php echo $baseUrl.$m['foto']; ?>" class="img-thumbnail picture hidden-xs" />
@@ -26,8 +29,48 @@ include('navbar_admin.php'); ?>
         </div>
     </div>   
 </div>
+<div class="modal fade bs-example-modal-lg<?php echo $n; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	<div class="modal-dialog modal-lg">
+	    <div class="modal-content" style="padding:15px;">
+	    	<h4><?php echo $m['nama']; ?></h4>
+	    	<img src="<?php echo $baseUrl.$m['foto']; ?>" class="thumbnail" />
+	    	<table class="table">
+	    		<tr>
+	    			<td><strong>Nama</strong></td>
+	    			<td>:</td>
+	    			<td><?php echo $m['nama']; ?></td>
+	    		</tr>
+	    		<tr>
+	    			<td><strong>Email</strong></td>
+	    			<td>:</td>
+	    			<td><a href="mailto:<?php echo $m['email']; ?>"><?php echo $m['email']; ?></a></td>
+	    		</tr>
+	    		<tr>
+	    			<td><strong>Jenis Kelamin</strong></td>
+	    			<td>:</td>
+	    			<td><?php echo $m['jenis_kelamin']; ?></td>
+	    		</tr>
+	    		<tr>
+	    			<td><strong>Instansi</strong></td>
+	    			<td>:</td>
+	    			<td><?php echo $m['instansi']; ?></td>
+	    		</tr>
+	    		<tr>
+	    			<td><strong>Asal</strong></td>
+	    			<td>:</td>
+	    			<td><?php echo $m['alamat']; ?></td>
+	    		</tr>
+	    		<tr>
+	    			<td><strong>No Telepon</strong></td>
+	    			<td>:</td>
+	    			<td><?php echo $m['no_telp']; ?></td>
+	    		</tr>
+	    	</table>
+	    </div>
+	</div>
+</div>
 <!-- LOOP HERE END -->
-<?php } ?>
+<?php $n++; } ?>
 
 <br />
 <br />

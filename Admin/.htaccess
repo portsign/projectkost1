@@ -1,0 +1,6 @@
+ErrorDocument 404/ /404.shtml
+RewriteEngine on
+Options All -Indexes
+RewriteRule ^404/?$ 404.php [L]
+RewriteRule ^index/?$ index.php [L]
+RewriteRule ^anggota/?$ anggota.php [L]

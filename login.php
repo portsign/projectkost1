@@ -15,9 +15,20 @@ include('navbar.php');
             </div>
         </div>
         <div class="row">
-             <div class="contact_full">
-             <center>
-                  
+            <div class="contact_full">
+            <center>
+            <?php 
+                if (isset($_GET['s'])) {
+                    if ($_GET['s']=='false') {
+                        echo '
+                            <div class="alert alert-warning" style="width:465px;" role="alert">
+                              <a href="#" class="alert-link">Failed to login, wrong username or password or admin has not confirmed your existence in this bording house</a>
+                            </div>
+                        ';
+                    }
+                } 
+            ?>
+                    
                         <form action="<?php echo $baseUrl; ?>Machine/record" method="POST">
                             <div class="form-level-login">
                                 <input name="email" placeholder="Email" type="email" class="input-block" />

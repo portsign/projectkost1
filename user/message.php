@@ -14,7 +14,7 @@ include('navbar_admin.php'); ?>
             <div class="post-heading nomargin">
             		<input type="hidden" name="email" value="<?php echo $getEmail; ?>" />
             		<input type="hidden" name="getLink" value="<?php echo $baseUrl."user/message"; ?>" />
-                	<textarea class="form-control" name="message" placeholder="Your Message Here"></textarea>
+                	<textarea class="form-control" name="message" placeholder="Your Message Here" required></textarea>
              	
             </div> 
             <div class="post-heading nomargin">
