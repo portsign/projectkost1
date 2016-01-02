@@ -9,11 +9,11 @@ include('navbar_admin.php'); ?>
 <div class="col-md-12">
 	<div class="widget-area no-padding blank">
 			<div class="status-upload">
-				<form>
-					<h4 style="padding:10px">Laporan Ke Admin</h4>
-					<textarea placeholder="Laporkan Ke Admin sekarang" ></textarea>
-			
-					<button type="submit" class="btn btn-success green"></i>Lapor ke Admin</button>
+				<form action="<?php echo $baseUrl; ?>Machine/record" method="POST">
+					<h4 style="padding:10px">Laporan ke Pemilik Kos</h4>
+					<input type="hidden" name="email" value="<?php echo $_SESSION['EmailKost']; ?>" />
+					<textarea name="laporan" placeholder="Lapor Ke Pemilik Kos sekarang" ></textarea>
+					<button type="submit" name="lapor" class="btn btn-success green"></i>Lapor</button>
 				</form>
 			</div><!-- Status Upload  -->
 		</div><!-- Widget Area -->

@@ -3,25 +3,35 @@ include('header.php');
 include('navbar_admin.php'); ?>
     
 <!-- DASHBOARD -->
-<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
 <div class="clearbr"></div>
+
+<?php 
+	$getAnggota = mysqli_query($connecDB, "SELECT * FROM member ORDER BY id_member DESC");
+	while($m = mysqli_fetch_array($getAnggota)) {
+?>
+<!-- LOOP HERE -->
+<div class="container" style="margin-top: 10px;">
 	<div class="panel">
 		<div class="col-md-4 bg_blur ">
-    	    <a href="#" class="follow_btn hidden-xs">Follow</a>
+    	    <a href="#" class="follow_btn hidden-xs">See Detail</a>
 		</div>
         <div class="col-md-8  col-xs-12">
-           <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" class="img-thumbnail picture hidden-xs" />
-           <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail visible-xs picture_mob" />
+           <img src="<?php echo $baseUrl.$m['foto']; ?>" class="img-thumbnail picture hidden-xs" />
+           <img src="<?php echo $baseUrl.$m['foto']; ?>" class="img-thumbnail visible-xs picture_mob" />
            <div class="header">
-                <h1>Lorem Ipsum</h1>
-                <h4>Web Developer</h4>
-                <span>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+                <h1><?php echo $m['nama']; ?></h1>
+                <h4><?php echo $m['instansi']; ?></h4>
+                <span><?php echo $m['alamat']; ?></span>
            </div>
         </div>
     </div>   
-    
 </div>
+<!-- LOOP HERE END -->
+<?php } ?>
+
+<br />
+<br />
+
 <style type="text/css">
 	.well {
 	    margin-top:-20px;

@@ -6,40 +6,50 @@ include('navbar_admin.php'); ?>
 <div class="container">
 <div class="clearbr"></div>
     <div class="col-sm-12">
-    <form action="" method="">
+    <form action="<?php echo $baseUrl; ?>Machine/record" method="POST">
     	<div class="panel panel-white post panel-shadow">
             <div class="post-description">
             		<p>Kirim Pesan Kepada Seluruh Anggota Kos</p>
             	</div>
             <div class="post-heading nomargin">
-            	
-                	<textarea class="form-control" placeholder="Your Message Here"></textarea>
+            		<input type="hidden" name="email" value="<?php echo $getEmail; ?>" />
+            		<input type="hidden" name="getLink" value="<?php echo $baseUrl."user/message"; ?>" />
+                	<textarea class="form-control" name="message" placeholder="Your Message Here"></textarea>
              	
             </div> 
             <div class="post-heading nomargin">
-            	<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-send"></i> Send</button>
+            	<button type="submit" name="message_to_all" class="btn btn-success"><i class="glyphicon glyphicon-send"></i> Send</button>
             </div>
         </div>
         </form>
+
+        <?php 
+        	$showAllMessage = mysqli_query($connecDB, "SELECT * FROM user_message ORDER BY id_user_message DESC LIMIT 30")or die(mysql_error());
+        	while($d = mysqli_fetch_array($showAllMessage)) {
+        		$getDataEmail = $d['email'];
+        		$showProfile = mysqli_query($connecDB, "SELECT * FROM member WHERE email = '$getDataEmail'");
+        		$e = mysqli_fetch_array($showProfile);
+        ?>
+
         <div class="panel panel-white post panel-shadow">
             <div class="post-heading">
                 <div class="pull-left image">
-                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    <img src="<?php echo $baseUrl.$e['foto']; ?>" class="img-circle avatar" alt="user profile image">
                 </div>
                 <div class="pull-left meta">
                     <div class="title h5">
-                        <a href="#"><b>Pemilik Kost</b></a>
+                        <a href="#"><b><?php echo $e['nama']; ?></b></a>
                         made a post.
                     </div>
-                    <h6 class="text-muted time">1 minute ago</h6>
+                    <h6 class="text-muted time"><?php echo $d['time_post']; ?></h6>
                 </div>
             </div> 
             <div class="post-description"> 
-                <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                
+                <p><?php echo $d['message']; ?></p>
             </div>
-            
-        </div>
+        </div> 
+
+        <?php } ?>
         
     </div>
 </div>

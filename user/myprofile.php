@@ -14,6 +14,15 @@ include('navbar_admin.php'); ?>
 			</div>
 			';
 		}
+		if (isset($_GET['update'])) {
+			if ($_GET['update']=='success') {
+				echo '
+					<div class="alert alert-success" role="alert">
+					  <a href="#" class="alert-link"><i class="glyphicon glyphicon-info-sign"></i> Profil anda berhasil terupdate.</a>
+					</div>
+				';
+			}
+		}
 	?>
 	
 	<div class="span3 well">
@@ -29,9 +38,9 @@ include('navbar_admin.php'); ?>
     	<br />
     	<b>Jenis Kelamin</b> &nbsp;&nbsp;&nbsp;
   		
-		<input type="radio" <?php if ($dataUser['jenis_kelamin']=='laki - laki') { echo 'checked'; } ?> name="jenis_kelamin" value="Laki - Laki" />
+		<input type="radio" <?php if ($dataUser['jenis_kelamin']=='laki - laki') { echo 'checked'; } ?> name="jenis_kelamin" value="laki - laki" />
 		Laki - Laki
-		<input type="radio" <?php if ($dataUser['jenis_kelamin']=='perempuan') { echo ' checked'; } ?> name="jenis_kelamin" value="Perempuan" />
+		<input type="radio" <?php if ($dataUser['jenis_kelamin']=='perempuan') { echo ' checked'; } ?> name="jenis_kelamin" value="perempuan" />
 		Perempuan
 
 		<br /><br />
