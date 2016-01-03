@@ -70,16 +70,17 @@
 
                             <?php 
                                 $showFas = mysqli_query($connecDB, "SELECT * FROM fasilitas ORDER BY id_fasilitas DESC");
+                                $no = 1;
                                 while($s = mysqli_fetch_array($showFas)) {
                             ?>
                                 <tr>
-                                    <td>1</td>
+                                    <td><?php echo $no; ?></td>
                                     <td><img src="<?php echo $baseUrl.$s['thumb']; ?>" width="80" /></td>
                                     <td><?php echo $s['title']; ?></td>
                                     <td><?php echo $s['description']; ?></td>
                                     <td><a href="<?php echo $baseUrl ?>Machine/record/?t=del_fas&id=<?php echo $s['id_fasilitas']; ?>" class="btn btn-primary btn-xs" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Fasilitas ini?')"><i class="fa fa-remove"></i> Delete</a>&nbsp;<a href="<?php echo $baseUrl; ?>Admin/fasilitas/edit/<?php echo $s['id_fasilitas']; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</a></td>
                                 </tr>
-                            <?php } ?>
+                            <?php $no++; } ?>
                             </tbody>
                         </table>
 
