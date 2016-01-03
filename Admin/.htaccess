@@ -2,5 +2,16 @@ ErrorDocument 404/ /404.shtml
 RewriteEngine on
 Options All -Indexes
 RewriteRule ^404/?$ 404.php [L]
-RewriteRule ^index/?$ index.php [L]
-RewriteRule ^anggota/?$ anggota.php [L]
+RewriteRule ^fasilitas/?$ fasilitas.php [L]
+RewriteRule ^fasilitas/([A-Za-z0-9_-]+)?$ fasilitas.php?type=$1 [L]
+RewriteRule ^fasilitas/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)?$ fasilitas.php?type=$1&id=$2 [L]
+RewriteRule ^profile/?$ profile.php [L]
+RewriteRule ^maps/?$ maps.php [L]
+RewriteRule ^reservasi/?$ reservasi.php [L]
+RewriteRule ^contact/?$ contact.php [L]
+RewriteRule ^usermessage/?$ usermessage.php [L]
+RewriteRule ^memberlist/?$ memberlist.php [L]
+RewriteRule ^postmessage/?$ postmessage.php [L]
+RewriteRule ^settings/?$ settings.php [L]
+RewriteRule ^login/?$ login.php [L]
+RewriteRule ^logout/?$ logout.php [L]

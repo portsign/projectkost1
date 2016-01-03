@@ -3,7 +3,8 @@ include('../Config/Database.php');
 include('../Config/Function.php');
 header('Content-Type: text/plain');
 //REGISTER ----------------------------------------------------------------------------------------------------------
-if (isset($_POST['register'])) {
+if (isset($_POST['register'])) 
+{
 	
     $nama = h($_POST['nama']);
     $email    = h($_POST['email']);
@@ -28,7 +29,8 @@ if (isset($_POST['register'])) {
 }
 
 //LOGIN --------------------------------------------------------------------------------------------------------------
-if (isset($_POST['login'])) {
+if (isset($_POST['login'])) 
+{
 
     $email  = h($_POST['email']);
     $password  = h($_POST['password']);
@@ -59,7 +61,8 @@ if (isset($_POST['login'])) {
 } 
 
 // EDIT PROFILE ----------------------------------------------------------------------------------------------------
-if (isset($_POST['editProfile'])) {
+if (isset($_POST['editProfile'])) 
+{
 
     $getEmail = $_POST['email'];
     $nama = $_POST['nama'];
@@ -140,7 +143,8 @@ if (isset($_POST['editProfile'])) {
 
 // LAPORAN KE PEMILIK KOS ----------------------------------------------------------------------------------------
 
-if (isset($_POST['lapor'])) {
+if (isset($_POST['lapor'])) 
+{
     $getEmail = $_POST['email'];
     $pesan = $_POST['laporan'];
     mysqli_query($connecDB, "INSERT INTO laporan (email, message, time_post) VALUES ('$getEmail', '$pesan', NOW())")or die(mysql_error());
@@ -162,4 +166,230 @@ if (isset($_POST['message_to_all']))
     }
     header('Location: ../user/message');
 }
+
+if (isset($_POST['loginAdmin'])) 
+{
+
+    $username  = h($_POST['username']);
+    $password  = h($_POST['password']);
+    $pass = sha1(md5($salt.$password));
+
+    $login=mysqli_query($connecDB, "SELECT * FROM administrator WHERE username='$username' AND password='$pass'");
+    $ketemu=mysqli_num_rows($login);
+    $r=mysqli_fetch_array($login);
+    if ($ketemu > 0) {
+        
+        session_start();
+        $_SESSION['AdminUsernameKost'] = $r['username'];
+        $_SESSION['AdminPasswordKost'] = $r['password'];
+
+        setcookie("cookname", $_SESSION['AdminUsernameKost'], time() + 9999999);
+        header('location: ../Admin/');
+        
+    } else {
+        header('location: ../Admin/login/?s=false');
+    }
+
+}
+
+//FASILITAS--------------------------------------------------------------------------------------------------------
+
+if (isset($_POST['inputFasilitas'])) 
+{
+
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $path = "images/fasilitas/".$_FILES["thumb"]["name"];
+
+    $target_dir = "../images/fasilitas/";
+    $target_file = $target_dir . basename($_FILES["thumb"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+    if(isset($_POST["editProfile"])) {
+        $check = getimagesize($_FILES["thumb"]["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
+
+    if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+
+    if ($_FILES["thumb"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+
+    } else {
+        if (move_uploaded_file($_FILES["thumb"]["tmp_name"], $target_file)) {
+            echo "The file ". basename( $_FILES["thumb"]["name"]). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+
+    mysqli_query($connecDB, "INSERT INTO fasilitas (thumb, title, description) VALUES ('$path','$title','$description')");
+    header('Location: ../Admin/fasilitas');
+}
+if (isset($_POST['editFasilitas'])) 
+{
+    
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+
+    if (empty($_FILES["thumb"]["name"])) {
+        mysqli_query($connecDB, "UPDATE fasilitas SET title = '$title', 
+                                       description = '$description' WHERE id_fasilitas = '$id'")or die(mysqli_error());
+        header('Location: ../Admin/fasilitas');
+    } else {
+
+        $path = "images/fasilitas/".$_FILES["thumb"]["name"];
+        $thumbBefore = $_POST['thumbBefore'];
+        $target_dir = "../images/fasilitas/";
+        $target_file = $target_dir . basename($_FILES["thumb"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+        if(isset($_POST["editProfile"])) {
+            $check = getimagesize($_FILES["thumb"]["tmp_name"]);
+            if($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+
+        if ($_FILES["thumb"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+
+        } else {
+            if (move_uploaded_file($_FILES["thumb"]["tmp_name"], $target_file)) {
+                echo "The file ". basename( $_FILES["thumb"]["name"]). " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+
+        mysqli_query($connecDB, "UPDATE fasilitas SET title = '$title', 
+                                       description = '$description',
+                                       thumb = '$path' WHERE id_fasilitas = '$id'");
+        unlink("../".$thumbBefore);
+        header('Location: ../Admin/fasilitas');
+
+    }
+
+}
+if (isset($_GET['t'])) 
+{
+    if ($_GET['t']=='del_fas') {
+        $id = $_GET['id'];
+        $showD = mysqli_query($connecDB, "SELECT * FROM fasilitas WHERE id_fasilitas = '$id'");
+        $i = mysqli_fetch_array($showD);
+        unlink("../".$i['thumb']);
+        mysqli_query($connecDB, "DELETE FROM fasilitas WHERE id_fasilitas = '$id'");
+        header('Location: ../../Admin/fasilitas');
+    }
+}
+//Fasilitas END ---------------------------------------------------------------------------------------------------
+
+//Profile Static Page ---------------------------------------------------------------------------------------------
+
+if (isset($_POST['editProfileKost'])) 
+{
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    if (empty($_FILES["thumb"]["name"])) {
+        mysqli_query($connecDB, "UPDATE static_page SET title = '$title', 
+                                        description = '$description' WHERE id_static_page = '1'");
+        header('Location: ../Admin/profile');
+    } else {
+        $path = "images/".$_FILES["thumb"]["name"];
+        $target_dir = "../images/";
+        $target_file = $target_dir . basename($_FILES["thumb"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+        if(isset($_POST["editProfile"])) {
+            $check = getimagesize($_FILES["thumb"]["tmp_name"]);
+            if($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+
+        if ($_FILES["thumb"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+
+        } else {
+            if (move_uploaded_file($_FILES["thumb"]["tmp_name"], $target_file)) {
+                echo "The file ". basename( $_FILES["thumb"]["name"]). " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+
+        mysqli_query($connecDB, "UPDATE static_page SET title = '$title', 
+                                        thumb = '$path',
+                                        description = '$description' WHERE id_static_page = '1'");
+        header('Location: ../Admin/profile');
+
+    }
+}
+
+//Profile Static Page end -----------------------------------------------------------------------------------------
+
 ?>

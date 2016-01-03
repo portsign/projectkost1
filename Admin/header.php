@@ -10,11 +10,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SB Admin - Bootstrap Admin Template</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link href="css/plugins/morris.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $baseUrl; ?>Admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $baseUrl; ?>Admin/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo $baseUrl; ?>Admin/css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo $baseUrl; ?>Admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
     <div id="wrapper">
+    <?php 
+        session_start();
+        if (empty($_SESSION['AdminUsernameKost']) && empty($_SESSION['AdminPasswordKost'])) 
+        { 
+        
+            header('Location: ../Admin/login'); 
+        
+        }
+    ?>

@@ -10,7 +10,7 @@ include('navbar.php');
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="feature_header text-center">
                             <h3 class="feature_title"><b>Fasilitas</b> Kami</h3>
-                            <h4 class="feature_sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Iusto provident non voluptatibus animi quidem incidunt eum, eligendi doloribus dicta.</h4>
+                            <h4 class="feature_sub">Fasilitas yang kami sediakan <br>Untuk Para penghuni Kost Putra Barito Antara Lain</h4>
                             <div class="divider"></div>
                         </div>
                     </div>  <!-- Col-md-12 End -->
