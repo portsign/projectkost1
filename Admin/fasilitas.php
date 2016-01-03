@@ -27,7 +27,7 @@
                                     Keterangan :
                                     <textarea class="form-control" name="description" rows="6" Placeholder="Keterangan Fasilitas"></textarea><br />
                                     <button type="submit" name="inputFasilitas" class="btn btn-primary">Submit</button>&nbsp;
-                                    <a href="./" class="btn btn-default">Cancel</a><br /><br />
+                                    <a href="<?php echo $baseUrl; ?>Admin/fasilitas" class="btn btn-default">Cancel</a><br /><br />
                                 </form>
                         
                         <?php 
@@ -47,7 +47,7 @@
                                     Keterangan :
                                     <textarea class="form-control" name="description" rows="6" Placeholder="Keterangan Fasilitas"><?php echo $f['description']; ?></textarea><br />
                                     <button type="submit" name="editFasilitas" class="btn btn-primary">Save Change</button>&nbsp;
-                                    <a href="../" class="btn btn-default">Cancel</a><br /><br />
+                                    <a href="<?php echo $baseUrl; ?>Admin/fasilitas" class="btn btn-default">Cancel</a><br /><br />
                                 </form>
 
                         <?php

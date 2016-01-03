@@ -392,4 +392,150 @@ if (isset($_POST['editProfileKost']))
 
 //Profile Static Page end -----------------------------------------------------------------------------------------
 
+// PETA KOS -------------------------------------------------------------------------------------------------------
+
+if (isset($_POST['petakos'])) {
+    $latlong = $_POST['latlong'];
+    $mapmarker = $_POST['mapMarker'];
+    mysqli_query($connecDB, "UPDATE maps SET latlong = '$latlong', mapmarker = '$mapmarker'");
+    header('Location: ../Admin/maps');
+}
+
+// PETA KOS END ---------------------------------------------------------------------------------------------------
+
+
+//RESERVASI--------------------------------------------------------------------------------------------------------
+
+if (isset($_POST['inputReservasi'])) 
+{
+
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $path = "images/reservasi/".$_FILES["thumb"]["name"];
+
+    $target_dir = "../images/reservasi/";
+    $target_file = $target_dir . basename($_FILES["thumb"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+    if(isset($_POST["editProfile"])) {
+        $check = getimagesize($_FILES["thumb"]["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
+
+    if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+
+    if ($_FILES["thumb"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+
+    } else {
+        if (move_uploaded_file($_FILES["thumb"]["tmp_name"], $target_file)) {
+            echo "The file ". basename( $_FILES["thumb"]["name"]). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+
+    mysqli_query($connecDB, "INSERT INTO reservasi (thumb, title, description) VALUES ('$path','$title','$description')");
+    header('Location: ../Admin/reservasi');
+}
+if (isset($_POST['editReservasi'])) 
+{
+    
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+
+    if (empty($_FILES["thumb"]["name"])) {
+        mysqli_query($connecDB, "UPDATE reservasi SET title = '$title', 
+                                       description = '$description' WHERE id_reservasi = '$id'")or die(mysqli_error());
+        header('Location: ../Admin/reservasi');
+    } else {
+
+        $path = "images/reservasi/".$_FILES["thumb"]["name"];
+        $thumbBefore = $_POST['thumbBefore'];
+        $target_dir = "../images/reservasi/";
+        $target_file = $target_dir . basename($_FILES["thumb"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+        if(isset($_POST["editProfile"])) {
+            $check = getimagesize($_FILES["thumb"]["tmp_name"]);
+            if($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+
+        if ($_FILES["thumb"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+
+        } else {
+            if (move_uploaded_file($_FILES["thumb"]["tmp_name"], $target_file)) {
+                echo "The file ". basename( $_FILES["thumb"]["name"]). " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+
+        mysqli_query($connecDB, "UPDATE reservasi SET title = '$title', 
+                                       description = '$description',
+                                       thumb = '$path' WHERE id_reservasi = '$id'");
+        unlink("../".$thumbBefore);
+        header('Location: ../Admin/reservasi');
+
+    }
+
+}
+if (isset($_GET['t'])) 
+{
+    if ($_GET['t']=='del_fas') {
+        $id = $_GET['id'];
+        $showD = mysqli_query($connecDB, "SELECT * FROM reservasi WHERE id_reservasi = '$id'");
+        $i = mysqli_fetch_array($showD);
+        unlink("../".$i['thumb']);
+        mysqli_query($connecDB, "DELETE FROM reservasi WHERE id_reservasi = '$id'");
+        header('Location: ../../Admin/reservasi');
+    }
+}
+//RESERVASI END ---------------------------------------------------------------------------------------------------
 ?>

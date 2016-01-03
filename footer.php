@@ -121,8 +121,8 @@
        var map;
           map = new GMaps({
             div: '#map',
-            lat: 23.709921,
-            lng: 90.407143,
+            lat: -7.760982,
+            lng: 110.4076677,
             scrollwheel: false,
             panControl: false,
             zoomControl: false,
