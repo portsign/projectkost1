@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Kost Putra Barito - Admin Panel</title>
     <link href="<?php echo $baseUrl; ?>Admin/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo $baseUrl; ?>Admin/css/sb-admin.css" rel="stylesheet">
     <link href="<?php echo $baseUrl; ?>Admin/css/plugins/morris.css" rel="stylesheet">

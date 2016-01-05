@@ -7,6 +7,18 @@ include('navbar_admin.php'); ?>
 <div class="clearbr"></div>
 
 <div class="col-md-12">
+	<?php 
+		if (isset($_GET['sent'])) {
+			if($_GET['sent']=='scs') {
+				echo '
+				<div class="alert alert-success alert-dismissible" role="alert">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <strong>Sukses!</strong> Pesan Anda Berhasil Terkirim Ke Admin
+				</div>
+				';
+			}
+		}
+		?>
 	<div class="widget-area no-padding blank">
 			<div class="status-upload">
 				<form action="<?php echo $baseUrl; ?>Machine/record" method="POST">

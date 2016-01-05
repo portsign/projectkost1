@@ -146,8 +146,11 @@ if (isset($_POST['editProfile']))
 if (isset($_POST['lapor'])) 
 {
     $getEmail = $_POST['email'];
+    $show = mysqli_query($connecDB, "SELECT * FROM member WHERE email = '$getEmail'")or die(mysqli_error());
+    $s = mysqli_fetch_array($show);
+    $getID = $s['id_member'];
     $pesan = $_POST['laporan'];
-    mysqli_query($connecDB, "INSERT INTO laporan (email, message, time_post) VALUES ('$getEmail', '$pesan', NOW())")or die(mysql_error());
+    mysqli_query($connecDB, "INSERT INTO laporan (id_member, email, message, time_post) VALUES ('$getID', '$getEmail', '$pesan', NOW())")or die(mysqli_error());
     header('Location: ../user/lapor/?sent=scs');
 }
 
@@ -549,4 +552,27 @@ if (isset($_GET['t']))
 }
 
 //CONTACT END ----------------------------------------------------------------------------------------------------
+
+// MEMBER LIST ---------------------------------------------------------------------------------------------------
+
+if (isset($_POST['editStatus'])) {
+    $id = $_POST['id'];
+    $status = $_POST['status'];
+    mysqli_query($connecDB, "UPDATE member SET status = '$status' WHERE id_member = '$id'");
+    header('Location: ../Admin/memberlist');
+}
+
+// MEMBER LIST END -----------------------------------------------------------------------------------------------
+
+// USER MESSAGE / LAPORAN ----------------------------------------------------------------------------------------
+
+if (isset($_GET['type'])) {
+    if ($_GET['type']=='del_lap') {
+        $getID = $_GET['id'];
+        mysqli_query($connecDB, "DELETE FROM laporan WHERE id_laporan = '$getID'");
+        header('Location: ../../Admin/usermessage');
+    }
+}
+
+// USER MESSAGE / LAPORAN END ------------------------------------------------------------------------------------
 ?>
