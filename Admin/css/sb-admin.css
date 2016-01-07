@@ -284,3 +284,22 @@ color: #fff;
 text-align: center;
 text-shadow: 0 2px 2px rgba(0,0,0,0.5);
 }
+
+.morestyle {
+    border:1px solid #dfdfdf;
+    padding: 10px;
+}
+
+.chatbox {
+    width: 1076px;
+    margin-left: 250px;
+}
+.chat-text {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    border-top: 4px solid #888;
+}
+.celah{
+    height: 200px;
+}

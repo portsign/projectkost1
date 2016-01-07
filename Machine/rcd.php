@@ -1,4 +1,10 @@
 <?php 
+/* ------------------------------------
+Controller Keseluruhan Record Database
+Record POST maupun GET
+C0ded by @Indocreator.com
+---------------------------------------*/
+
 include('../Config/Database.php');
 include('../Config/Function.php');
 header('Content-Type: text/plain');
@@ -397,7 +403,8 @@ if (isset($_POST['editProfileKost']))
 
 // PETA KOS -------------------------------------------------------------------------------------------------------
 
-if (isset($_POST['petakos'])) {
+if (isset($_POST['petakos'])) 
+{
     $latlong = $_POST['latlong'];
     $mapmarker = $_POST['mapMarker'];
     mysqli_query($connecDB, "UPDATE maps SET latlong = '$latlong', mapmarker = '$mapmarker'");
@@ -555,7 +562,8 @@ if (isset($_GET['t']))
 
 // MEMBER LIST ---------------------------------------------------------------------------------------------------
 
-if (isset($_POST['editStatus'])) {
+if (isset($_POST['editStatus'])) 
+{
     $id = $_POST['id'];
     $status = $_POST['status'];
     mysqli_query($connecDB, "UPDATE member SET status = '$status' WHERE id_member = '$id'");
@@ -566,7 +574,8 @@ if (isset($_POST['editStatus'])) {
 
 // USER MESSAGE / LAPORAN ----------------------------------------------------------------------------------------
 
-if (isset($_GET['type'])) {
+if (isset($_GET['type'])) 
+{
     if ($_GET['type']=='del_lap') {
         $getID = $_GET['id'];
         mysqli_query($connecDB, "DELETE FROM laporan WHERE id_laporan = '$getID'");
@@ -575,4 +584,23 @@ if (isset($_GET['type'])) {
 }
 
 // USER MESSAGE / LAPORAN END ------------------------------------------------------------------------------------
+
+// POST MESSAGE --------------------------------------------------------------------------------------------------
+
+if (isset($_POST['sendMessageAdmin'])) 
+{
+    $message = $_POST['message'];
+    mysqli_query($connecDB, "INSERT INTO user_message (email, message, time_post) VALUES ('admin@putrabarito.com','$message',NOW())");
+
+    $notif = mysqli_query($connecDB, "SELECT * FROM member");
+    while($n = mysqli_fetch_array($notif)) {
+        $n_email = $n['email'];
+        mysqli_query($connecDB, "INSERT INTO notif (email, link, status, time_notif) VALUES ('$n_email','','pending',NOW())");
+    }
+    header('Location: ../Admin/postmessage');
+}
+
+
+// POST MESSAGE END ----------------------------------------------------------------------------------------------
+
 ?>

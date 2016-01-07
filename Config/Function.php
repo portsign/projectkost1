@@ -1,6 +1,6 @@
 <?php 
 
-	//ANTI INJECTION
+	//SECURE ANTI INJECTION AND ANTI XSS (Cross Site Scripting)
 	function h($data) 
 	{
 
@@ -9,5 +9,5 @@
 	
 	}	
 
-	// SALT PASSWORD
+	// SECURE SALT PASSWORD
 	$salt = '~!@#$%^&*(1111)_+ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
