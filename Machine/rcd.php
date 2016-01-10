@@ -1,9 +1,10 @@
 <?php 
-/* ------------------------------------
-Controller Keseluruhan Record Database
-Record POST maupun GET
-C0ded by @Indocreator.com
----------------------------------------*/
+/* -----------------------------------------------------
+Controller Keseluruhan Record Database                 | 
+Record POST maupun GET                                 |
+C0ded by @Indocreator.com                              |
+:: The Most Fastest Framework based on PHP Native ::   |
+------------------------------------------------------*/
 
 include('../Config/Database.php');
 include('../Config/Function.php');
@@ -603,4 +604,57 @@ if (isset($_POST['sendMessageAdmin']))
 
 // POST MESSAGE END ----------------------------------------------------------------------------------------------
 
+// CONTACT SUPPORT -----------------------------------------------------------------------------------------------
+
+if(isset($_POST['g-recaptcha-response'])){
+    $captcha = $_POST['g-recaptcha-response'];
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $no_telp = $_POST['no_telp'];
+    $msg = $_POST['messege'];
+    // echo $messege;exit;
+    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lew6xQTAAAAAJk_2CiXfYudEjgGg8NzOf1AmOCt&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+    $responseData = json_decode($response);
+    if ($responseData->success) {
+        
+        mysqli_query($connecDB, "INSERT INTO contact (nama, email, no_telp, message, time) 
+                                 VALUES ('$nama','$email','$no_telp','$msg',NOW())")or die(mysqli_error());
+        header('Location: ../contact/?scs=true');
+
+    } else {
+        header('Location: ../contact/?recaptcha=false');
+    }
+}
+
+// CONTACT SUPPORT END -------------------------------------------------------------------------------------------
+
+
+// GANTI PASSWORD ADMIN ------------------------------------------------------------------------------------------
+
+if (isset($_POST['changePasswordAdmin'])) {
+    $oldpass = h($_POST['oldpass']);
+    $newpass = h($_POST['newpass']);
+    $renewpass = h($_POST['renewpass']);
+
+    $old     = sha1(md5($salt.$oldpass));
+    $pass     = sha1(md5($salt.$newpass));
+    $repass     = sha1(md5($salt.$renewpass));
+
+    $showPass = mysqli_query($connecDB, "SELECT * FROM administrator WHERE password = '$old'");
+    $p = mysqli_fetch_array($showPass);
+
+    if ($p['password']=='') {
+        header('Location: ../Admin/settings/?val=wop');
+    } else if ($pass!=$repass) {
+        header('Location: ../Admin/settings/?val=wcp');
+    } else {
+        mysqli_query($connecDB, "UPDATE administrator SET password = '$pass'");
+        session_start();
+        $_SESSION['passwordKost'] = $pass;
+        header('Location: ../Admin/settings/?val=true');
+    }
+
+}
+
+// GANTI PASSWORD ADMIN END --------------------------------------------------------------------------------------
 ?>

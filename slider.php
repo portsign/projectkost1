@@ -11,40 +11,40 @@
            	<div class="carousel-inner">
            	 	<div class="item active">
            	 		<div class="overlay-slide">
-           	 			<img src="images/banner/p5.jpg" alt="" class="img-responsive">
+           	 			<img src="images/banner/p3.jpeg" alt="" class="img-responsive">
            	 		</div>
            	 		<div class="carousel-caption">
                	 		<div class="col-md-12 col-xs-12 text-center">
-                      <h4>Putra Barito</h4>
-               	 			<h3 class="animated2"> <b>Creative</b> Modern and clean </h3>
+                       <h2 style="font-size:28px">Putra Barito</h2>
+               	 			<h3 class="animated2"> <b>Elegan</b> Modern dan bersih </h3>
                	 			<div class="line"></div>
-               	 			<p class="animated3">Unique clean design</p>
+               	 			<p class="animated3">Index kost Jogja</p>
                	 		</div>
            	 		</div>
            	 	</div>
                 <div class="item">
                     <div class="overlay-slide">
-                        <img src="images/banner/p3.jpg" alt="" class="img-responsive">
+                        <img src="images/banner/p3.jpeg" alt="" class="img-responsive">
            	 		</div>
            	 		<div class="carousel-caption">
                	 		<div class="col-md-12 col-xs-12 text-center">
-                    <h2>Cyprass</h2>
-               	 			<h3 class="animated3"> responsive <b>Flat </b>design</h3>
+                    <h2 style="font-size:28px">Putra Barito</h2>
+               	 			<h3 class="animated3"> Dekat <b>dengan </b>Banyak Kampus</h3>
                	 			<div class="line"></div>
-               	 			<p class="animated2">best choice for you</p>
+               	 			<p class="animated2">Index Kost Jogja</p>
                	 		</div>
            	 		</div>
            	 	</div>
            	 	<div class="item">
                     <div class="overlay-slide">
-                        <img src="images/banner/p10.jpg" alt="" class="img-responsive">
+                        <img src="images/banner/p3.jpeg" alt="" class="img-responsive">
            	 		</div>
            	 		<div class="carousel-caption">
                	 		<div class="col-md-12 col-xs-12 text-center">
-                    <h2>Cyprass</h2>
-               	 			<h3 class="animated3"> We're crazy <b>coders</b></h3>
+                    <h2 style="font-size:28px">Putra Barito</h2>
+               	 			<h3 class="animated3"> Kami Melayani <b>Sebaik Mungkin</b></h3>
                	 			<div class="line"></div>
-               	 			<p class="animated2"> way to success</p>
+               	 			<p class="animated2"> Index Kost Jogja</p>
                	 		</div>
            	 		</div>
            	 	</div>

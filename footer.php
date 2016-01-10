@@ -3,7 +3,7 @@
     <div class="footer_top">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12">
                     <h3 class="menu_head">Main Menu</h3>
                     <div class="footer_menu">
                         <ul>
@@ -17,7 +17,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-md-3 col-sm-6 col-xs-12">
                     <h3 class="menu_head">Useful Links</h3>
                     <div class="footer_menu">
                         <ul>
@@ -28,36 +28,38 @@
                             <li><a href="#">Frequently Asked Questions</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                </div> -->
+                <div class="col-md-4 col-sm-6 col-xs-12">
                     <h3 class="menu_head">Contact us</h3>
                     <div class="footer_menu_contact">
                         <ul>
                             <li> <i class="fa fa-home"></i>
                                 <span> 12 Segun Bagicha, 10th Floor </span></li>
                             <li><i class="fa fa-globe"></i>
-                                <span> +880-12345678</span></li>
+                                <span> <a href="http://putrabarito.com/">putrabarito.com</a></span></li>
                             <li><i class="fa fa-phone"></i>
-                                <span> info@mail.com</span></li>
+                                <span> Mulyo : 0813 28228818</span></li>
+                            <li><i class="fa fa-phone"></i>
+                                <span> Tomy : 0852 00167413</span></li>
                             <li><i class="fa fa-map-marker"></i>
-                            <span> www.web.com</span></li>
+                            <span> <a href="http://goo.gl/Asjwu">http://goo.gl/Asjwu</a></span></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12">
                     <h3 class="menu_head">Tags</h3>
                     <div class="footer_menu tags">
-                        <a href="#"> Design</a>
-                        <a href="#"> User Interface</a>
-                        <a href="#"> Graphics</a>
-                        <a href="#"> Web Design</a>
-                        <a href="#"> Development</a>
-                        <a href="#"> Asp.net</a>
-                        <a href="#"> Bootstrap</a>
-                        <a href="#"> Joomla</a>
-                        <a href="#"> SEO</a>
-                        <a href="#"> Wordepress</a>
+                        <a href="#"> Kost</a>
+                        <a href="#"> Kost Jogja</a>
+                        <a href="#"> Kost Murah</a>
+                        <a href="#"> Kost Eksklusif</a>
+                        <a href="#"> ELegan</a>
+                        <a href="#"> Amikom</a>
+                        <a href="#"> UII</a>
+                        <a href="#"> UPN</a>
+                        <a href="#"> Condong Catur</a>
+                        <a href="#"> Sleman</a>
                     </div>
                 </div>
 
@@ -70,7 +72,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="footer_bottom">
-                        <p class="text-block"> &copy; Copyright reserved to <span>PutraBarito </span></p>
+                        <p class="text-block"> &copy; Copyright reserved to <span><a href="http://putrabarito.com">PutraBarito</a> </span></p>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -116,27 +118,6 @@
         <script type="js/javascript" src="<?php echo $baseUrl; ?>js/wow.min.js"></script>
         <script type="text/javascript" src="<?php echo $baseUrl; ?>js/gmaps.js"></script>
         <script src="<?php echo $baseUrl; ?>js/custom.js"></script>
-	      <script>
-  		// Google Map - with support of gmaps.js
-       var map;
-          map = new GMaps({
-            div: '#map',
-            lat: -7.760982,
-            lng: 110.4076677,
-            scrollwheel: false,
-            panControl: false,
-            zoomControl: false,
-          });
-
-          map.addMarker({
-            lat: 23.709921,
-            lng: 90.407143,
-            title: 'Smilebuddy',
-            infoWindow: { 
-              content: '<p> Smilebuddy, Dhanmondhi 27</p>'
-            },
-            icon: "images/map1.png"
-          });
-        	</script>
+	      
     </body>
 </html>

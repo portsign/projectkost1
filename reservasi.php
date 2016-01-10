@@ -9,108 +9,33 @@ include('navbar.php');
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="feature_header text-center">
-                    <h3 class="feature_title">Our <b>Team Members</b></h3>
-                    <h4 class="feature_sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h4>
+                    <h3 class="feature_title">Reservasi <b>Yang Kami Jalankan</b></h3>
+                    <h4 class="feature_sub">Berikut adalah perbaikan-perbaikan pada kost putra barito. </h4>
                     <div class="divider"></div>
                 </div>
             </div>  <!-- Col-md-12 End -->
 
             <div id="owl-demo" class="owl-carousel owl-theme team-items">
+
+            <!-- BEGIN LOOP -->
+            <?php 
+                $showReservasi = mysqli_query($connecDB, "SELECT * FROM reservasi ORDER BY id_reservasi DESC");
+                while($r = mysqli_fetch_array($showReservasi)) {
+            ?>
                 <div class="item text-center">
                     <div class="single-member">
                         <div class="overlay-hover">
-                            <img src="images/team/pic6.jpg" alt="" class="img-responsive">
+                            <img src="<?php echo $baseUrl.$r['thumb']; ?>" alt="" class="img-responsive">
                             <div class="overlay-effect">
-                                <ul class="social list-inline">
-                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a href=""><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque. </p>
+                                
+                                <p><?php echo $r['description']; ?></p>
                             </div>
                         </div>
-                        <h3>John Abraham</h3>
-                        <h5>Chief Designer</h5>
+                        <h3><?php echo $r['title']; ?></h3>
                     </div>
                 </div>  <!-- item wrapper end -->
-                <div class="item text-center">
-                    <div class="single-member">
-                        <div class="overlay-hover">
-                            <img src="images/team/pic1.jpg" alt="" class="img-responsive">
-                            <div class="overlay-effect">
-                                <ul class="social list-inline">
-                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a href=""><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque. </p>
-                            </div>
-                        </div>
-                        <h3>John Abraham</h3>
-                        <h5>Chief Designer</h5>
-                    </div>
-                </div>  <!-- item wrapper end -->
-                <div class="item text-center">
-                    <div class="single-member">
-                        <div class="overlay-hover">
-                            <img src="images/team/pic2.jpg" alt="" class="img-responsive">
-                            <div class="overlay-effect">
-                                <ul class="social list-inline">
-                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a href=""><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque. </p>
-                            </div>
-                        </div>
-                        <h3>John Abraham</h3>
-                        <h5>Chief Designer</h5>
-                    </div>
-                </div>  <!-- item wrapper end -->
-                <div class="item text-center">
-                    <div class="single-member">
-                        <div class="overlay-hover">
-                            <img src="images/team/pic5.jpg" alt="" class="img-responsive">
-                            <div class="overlay-effect">
-                                <ul class="social list-inline">
-                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a href=""><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque. </p>
-                            </div>
-                        </div>
-                        <h3>John Abraham</h3>
-                        <h5>Chief Designer</h5>
-                    </div>
-                </div>  <!-- item wrapper end -->
-                <div class="item text-center">
-                    <div class="single-member">
-                        <div class="overlay-hover">
-                            <img src="images/team/pic4.jpg" alt="" class="img-responsive">
-                            <div class="overlay-effect">
-                                <ul class="social list-inline">
-                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a href=""><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque. </p>
-                            </div>
-                        </div>
-                        <h3>John Abraham</h3>
-                        <h5>Chief Designer</h5>
-                    </div>
-                </div>  <!-- item wrapper end -->
+            <?php } ?>
+            <!-- END LOOP -->
 
             </div>
         </div>

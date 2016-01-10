@@ -16,40 +16,38 @@ include('navbar.php');
                     </div>  <!-- Col-md-12 End -->
                 </div>
                 <div class="row">
-                    <div class="main_feature text-center">
-                        <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="main_feature">
+                    <?php 
+                        $showFac = mysqli_query($connecDB, "SELECT * FROM fasilitas ORDER BY id_fasilitas DESC");
+                        while($f = mysqli_fetch_array($showFac)) {
+                    ?>
+                        <div class="col-md-3 col-xs-12 col-sm-6 text-center">
                                 <div class="feature_content">
-                                    <i class="fa fa-lightbulb-o"></i>
-                                    <h5>Lightweight</h5>
-                                    <p>You can not ignore mobile devices anymore and with this theme all your visitors will be very pleased how they see your website.</p>
-                                    <button class="btn btn-main"> Read More</button>
+                                    <img src="<?php echo $f['thumb']; ?>" width="200" />
+                                    <h5><?php echo $f['title']; ?></h5>
+                                    <p><?php echo $f['description']; ?></p>
+                                    <button class="btn btn-main" data-toggle="modal" data-target=".bs-example-modal-lg<?php echo $f['id_fasilitas']; ?>"> Read More</button>
+                                </div>
+                        </div>
+                        <div class="modal fade bs-example-modal-lg<?php echo $f['id_fasilitas']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content" style="padding:15px;">
+                                <h3>DETAIL</h3>
+                                <hr />
+                                <img src="<?php echo $f['thumb']; ?>" style="width:100%" />
+                                <h4><?php echo $f['title']; ?></h4>
+                                  <p><?php echo $f['description']; ?></p>
+                                <hr />
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
-                        <div class="col-md-3 col-xs-12 col-sm-6">
-                                <div class="feature_content">
-                                    <i class="fa fa-pencil"></i>
-                                    <h5>Beautiful Typrography</h5>
-                                    <p>This theme integrates with WordPress in the most awesome way! Functionality is separated from style through uncreadble useful for user. </p>
-                                    <button class="btn btn-main"> Read More</button>
-                                </div>
-                        </div> <!-- Col-md-4 Single_feature End -->
-                        <div class="col-md-3 col-xs-12 col-sm-6">
-                                <div class="feature_content">
-                                    <i class="fa fa-cog"></i>
-                                    <h5>Full time Support</h5>
-                                    <p>Full Time support. Very much helpful and possesive at the same time. With all this in mind you won’t be outdated anytime soon. Really!! </p>
-                                    <button class="btn btn-main"> Read More</button>
-                                </div>
-                        </div> <!-- Col-md-4 Single_feature End -->
-                        <div class="col-md-3 col-xs-12 col-sm-6">
-                                <div class="feature_content">
-                                    <i class="fa fa-desktop"></i>
-                                    <h5>Ultra Responsive</h5>
-                                    <p>Shadow is as optimized as it gets. No useless wrappers, no double headings, everything is coded with SEO in mind. Content is KING! </p>
-                                    <button class="btn btn-main"> Read More</button>
-                                </div>
-                        </div> <!-- Col-md-4 Single_feature End -->
+                        </div>
+                    <?php } ?>
                         <!-- <button class="btn btn-main"> Read More</button> -->
+
+                        <!-- Large modal -->
+
+
                     </div>
             </div>  <!-- Row End -->
         </div>  <!-- Container End -->

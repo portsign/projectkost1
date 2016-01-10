@@ -45,11 +45,6 @@
                                     <td><?php echo $n['message']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Cookie</td>
-                                    <td>:</td>
-                                    <td><?php echo $n['cookie']; ?></td>
-                                </tr>
-                                <tr>
                                     <td>Time Contact</td>
                                     <td>:</td>
                                     <td><?php echo $n['time']; ?></td>
