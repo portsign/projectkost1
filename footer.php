@@ -34,7 +34,7 @@
                     <div class="footer_menu_contact">
                         <ul>
                             <li> <i class="fa fa-home"></i>
-                                <span> 12 Segun Bagicha, 10th Floor </span></li>
+                                <span> Jl. Tambak Boyo Gg. Tambak Rejo No.52A </span></li>
                             <li><i class="fa fa-globe"></i>
                                 <span> <a href="http://putrabarito.com/">putrabarito.com</a></span></li>
                             <li><i class="fa fa-phone"></i>
@@ -42,7 +42,7 @@
                             <li><i class="fa fa-phone"></i>
                                 <span> Tomy : 0852 00167413</span></li>
                             <li><i class="fa fa-map-marker"></i>
-                            <span> <a href="http://goo.gl/Asjwu">http://goo.gl/Asjwu</a></span></li>
+                            <span> <a href="http://goo.gl/Asjwu">http://putrabarito.com/maps</a></span></li>
                         </ul>
                     </div>
                 </div>
