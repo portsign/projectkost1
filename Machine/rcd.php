@@ -415,16 +415,16 @@ if (isset($_POST['petakos']))
 // PETA KOS END ---------------------------------------------------------------------------------------------------
 
 
-//RESERVASI--------------------------------------------------------------------------------------------------------
+//TIPEKAMAR--------------------------------------------------------------------------------------------------------
 
-if (isset($_POST['inputReservasi'])) 
+if (isset($_POST['inputTipeKamar'])) 
 {
 
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $path = "images/reservasi/".$_FILES["thumb"]["name"];
+    $path = "images/tipekamar/".$_FILES["thumb"]["name"];
 
-    $target_dir = "../images/reservasi/";
+    $target_dir = "../images/tipekamar/";
     $target_file = $target_dir . basename($_FILES["thumb"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -468,9 +468,9 @@ if (isset($_POST['inputReservasi']))
     }
 
     mysqli_query($connecDB, "INSERT INTO reservasi (thumb, title, description) VALUES ('$path','$title','$description')");
-    header('Location: ../Admin/reservasi');
+    header('Location: ../Admin/tipekamar');
 }
-if (isset($_POST['editReservasi'])) 
+if (isset($_POST['editTipeKamar'])) 
 {
     
     $id = $_POST['id'];
@@ -480,12 +480,12 @@ if (isset($_POST['editReservasi']))
     if (empty($_FILES["thumb"]["name"])) {
         mysqli_query($connecDB, "UPDATE reservasi SET title = '$title', 
                                        description = '$description' WHERE id_reservasi = '$id'")or die(mysqli_error());
-        header('Location: ../Admin/reservasi');
+        header('Location: ../Admin/tipekamar');
     } else {
 
-        $path = "images/reservasi/".$_FILES["thumb"]["name"];
+        $path = "images/tipekamar/".$_FILES["thumb"]["name"];
         $thumbBefore = $_POST['thumbBefore'];
-        $target_dir = "../images/reservasi/";
+        $target_dir = "../images/tipekamar/";
         $target_file = $target_dir . basename($_FILES["thumb"]["name"]);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -532,7 +532,7 @@ if (isset($_POST['editReservasi']))
                                        description = '$description',
                                        thumb = '$path' WHERE id_reservasi = '$id'");
         unlink("../".$thumbBefore);
-        header('Location: ../Admin/reservasi');
+        header('Location: ../Admin/tipekamar');
 
     }
 
@@ -545,10 +545,10 @@ if (isset($_GET['t']))
         $i = mysqli_fetch_array($showD);
         unlink("../".$i['thumb']);
         mysqli_query($connecDB, "DELETE FROM reservasi WHERE id_reservasi = '$id'");
-        header('Location: ../../Admin/reservasi');
+        header('Location: ../../Admin/tipekamar');
     }
 }
-//RESERVASI END ---------------------------------------------------------------------------------------------------
+//TIPEKAMAR END ---------------------------------------------------------------------------------------------------
 
 //CONTACT --------------------------------------------------------------------------------------------------------
 

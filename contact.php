@@ -16,6 +16,10 @@ include('navbar.php');
                 <div class="feature_header text-center">
                     <h3 class="feature_title">Kontak <b>Kami Disini</b></h3>
                     <h4 class="feature_sub">Kami terbuka dalam melayani anda. </h4>
+                    Jalan Alamat Lengkap No xx, Daerah, Kota Indonesia. 55283<br />
+                    Mulyo : 0813 28228818 / 
+                    Tomy : 0852 00167413<br />
+                    Alamat : <a href="<?php echo $baseUrl; ?>maps">Maps</a>
                     <div class="divider"></div>
                 </div>
             </div>

@@ -9,8 +9,10 @@ include('navbar.php');
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="feature_header text-center">
-                    <h3 class="feature_title">Reservasi <b>Yang Kami Jalankan</b></h3>
-                    <h4 class="feature_sub">Berikut adalah perbaikan-perbaikan pada kost putra barito. </h4>
+                    <h3 class="feature_title">Tipe Kamar</h3>
+                    <h4 class="feature_sub">Berikut adalah Tipe Kamar pada kost putra barito. <br />
+                    Untuk boking silahkan hubungi <a href="<?php echo $baseUrl; ?>contact">kontak</a>
+                    </h4>
                     <div class="divider"></div>
                 </div>
             </div>  <!-- Col-md-12 End -->

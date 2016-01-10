@@ -11,7 +11,7 @@
                             <li><a href="<?php echo $baseUrl; ?>fasilitas">Fasilitas</a></li>
                             <li><a href="<?php echo $baseUrl; ?>profile">Profile</a></li>
                             <li><a href="<?php echo $baseUrl; ?>maps">Maps</a></li>
-                            <li><a href="<?php echo $baseUrl; ?>reservasi">Reservasi</a></li>
+                            <li><a href="<?php echo $baseUrl; ?>tipekamar">Tipe Kamar</a></li>
                             <li><a href="<?php echo $baseUrl; ?>contact">Contact</a></li>
                             <li><a href="<?php echo $baseUrl; ?>login">Login</a></li>
                         </ul>

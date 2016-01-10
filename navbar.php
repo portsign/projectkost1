@@ -22,7 +22,7 @@
             <li <?php if (end($segments)=='fasilitas') { echo 'class="active"'; } ?> ><a href="<?php echo $baseUrl; ?>fasilitas"  class="page-scroll">Fasilitas</a> </li>
             <li <?php if (end($segments)=='profile') { echo 'class="active"'; } ?> ><a href="<?php echo $baseUrl; ?>profile" class="page-scroll" >Profile</a> </li>
             <li <?php if (end($segments)=='maps') { echo 'class="active"'; } ?> ><a href="<?php echo $baseUrl; ?>maps" class="page-scroll">Maps </a> </li>
-            <li <?php if (end($segments)=='reservasi') { echo 'class="active"'; } ?> ><a href="<?php echo $baseUrl; ?>reservasi" class="page-scroll">Reservasi</a></li>
+            <li <?php if (end($segments)=='tipekamar') { echo 'class="active"'; } ?> ><a href="<?php echo $baseUrl; ?>tipekamar" class="page-scroll">Tipe Kamar</a></li>
             <li <?php if (end($segments)=='contact') { echo 'class="active"'; } ?> ><a href="<?php echo $baseUrl; ?>contact" class="page-scroll">Contact</a></li>
             <li <?php if (end($segments)=='login') { echo 'class="active"'; } ?> ><a href="<?php echo $baseUrl; ?>login" class="page-scroll">Login</a> </li>
         </ul>
