@@ -13,10 +13,10 @@ header('Content-Type: text/plain');
 if (isset($_POST['register'])) 
 {
 	
-    $nama = h($_POST['nama']);
-    $email    = h($_POST['email']);
-    $password = h($_POST['password']);
-    $repassword = h($_POST['repassword']);
+    $nama = ($_POST['nama']);
+    $email    = ($_POST['email']);
+    $password = ($_POST['password']);
+    $repassword = ($_POST['repassword']);
     $pass     = sha1(md5($salt.$password));
     $repass     = sha1(md5($salt.$repassword));
     
@@ -39,8 +39,8 @@ if (isset($_POST['register']))
 if (isset($_POST['login'])) 
 {
 
-    $email  = h($_POST['email']);
-    $password  = h($_POST['password']);
+    $email  = ($_POST['email']);
+    $password  = ($_POST['password']);
     $pass = sha1(md5($salt.$password));
     
     $login=mysqli_query($connecDB, "SELECT * FROM member WHERE email='$email' AND password='$pass' AND status = 'accept'");
@@ -180,8 +180,8 @@ if (isset($_POST['message_to_all']))
 if (isset($_POST['loginAdmin'])) 
 {
 
-    $username  = h($_POST['username']);
-    $password  = h($_POST['password']);
+    $username  = ($_POST['username']);
+    $password  = ($_POST['password']);
     $pass = sha1(md5($salt.$password));
 
     $login=mysqli_query($connecDB, "SELECT * FROM administrator WHERE username='$username' AND password='$pass'");
@@ -632,9 +632,9 @@ if(isset($_POST['g-recaptcha-response'])){
 // GANTI PASSWORD ADMIN ------------------------------------------------------------------------------------------
 
 if (isset($_POST['changePasswordAdmin'])) {
-    $oldpass = h($_POST['oldpass']);
-    $newpass = h($_POST['newpass']);
-    $renewpass = h($_POST['renewpass']);
+    $oldpass = ($_POST['oldpass']);
+    $newpass = ($_POST['newpass']);
+    $renewpass = ($_POST['renewpass']);
 
     $old     = sha1(md5($salt.$oldpass));
     $pass     = sha1(md5($salt.$newpass));

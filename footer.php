@@ -42,7 +42,7 @@
                             <li><i class="fa fa-phone"></i>
                                 <span> Tomy : 0852 00167413</span></li>
                             <li><i class="fa fa-map-marker"></i>
-                            <span> <a href="http://goo.gl/Asjwu">http://putrabarito.com/maps</a></span></li>
+                            <span> <a href="http://putrabarito.com/maps">http://putrabarito.com/maps</a></span></li>
                         </ul>
                     </div>
                 </div>
