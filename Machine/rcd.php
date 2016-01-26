@@ -422,6 +422,8 @@ if (isset($_POST['inputTipeKamar']))
 
     $title = $_POST['title'];
     $description = $_POST['description'];
+    $harga = $_POST['harga'];
+    $stok = $_POST['stok'];
     $path = "images/tipekamar/".$_FILES["thumb"]["name"];
 
     $target_dir = "../images/tipekamar/";
@@ -467,7 +469,7 @@ if (isset($_POST['inputTipeKamar']))
         }
     }
 
-    mysqli_query($connecDB, "INSERT INTO reservasi (thumb, title, description) VALUES ('$path','$title','$description')");
+    mysqli_query($connecDB, "INSERT INTO reservasi (thumb, title, description, harga, stok) VALUES ('$path','$title','$description', '$harga', '$stok')");
     header('Location: ../Admin/tipekamar');
 }
 if (isset($_POST['editTipeKamar'])) 
@@ -476,9 +478,13 @@ if (isset($_POST['editTipeKamar']))
     $id = $_POST['id'];
     $title = $_POST['title'];
     $description = $_POST['description'];
+    $harga = $_POST['harga'];
+    $stok = $_POST['stok'];
 
     if (empty($_FILES["thumb"]["name"])) {
-        mysqli_query($connecDB, "UPDATE reservasi SET title = '$title', 
+        mysqli_query($connecDB, "UPDATE reservasi SET title = '$title',
+                                        harga = '$harga',
+                                        stok = '$stok',
                                        description = '$description' WHERE id_reservasi = '$id'")or die(mysqli_error());
         header('Location: ../Admin/tipekamar');
     } else {
@@ -530,6 +536,8 @@ if (isset($_POST['editTipeKamar']))
 
         mysqli_query($connecDB, "UPDATE reservasi SET title = '$title', 
                                        description = '$description',
+                                       harga = '$harga',
+                                       stok = '$stok',
                                        thumb = '$path' WHERE id_reservasi = '$id'");
         unlink("../".$thumbBefore);
         header('Location: ../Admin/tipekamar');

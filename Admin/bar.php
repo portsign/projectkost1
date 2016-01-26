@@ -55,7 +55,10 @@
                         <a href="<?php echo $baseUrl ?>Admin/maps"><i class="fa fa-map-marker"></i> Maps</a>
                     </li>
                     <li <?php if (end($segments)=='tipekamar') { echo 'class="active"'; } ?>>
-                        <a href="<?php echo $baseUrl ?>Admin/tipekamar"><i class="fa fa-asterisk"></i> Tipe Kamar</a>
+                        <a href="<?php echo $baseUrl ?>Admin/tipekamar"><i class="fa fa-asterisk"></i> Reservasi</a>
+                    </li>
+                    <li <?php if (end($segments)=='order') { echo 'class="active"'; } ?>>
+                        <a href="<?php echo $baseUrl ?>Admin/order"><i class="fa fa-asterisk"></i> Order</a>
                     </li>
                     <li <?php if (end($segments)=='contact') { echo 'class="active"'; } ?> >
                         <a href="<?php echo $baseUrl ?>Admin/contact"><i class="fa fa-phone-square"></i> Contact</a>

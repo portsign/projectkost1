@@ -7,11 +7,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Reservasi <small> kost</small>
+                            Reservasi Order <small> list</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-asterisk"></i> Tipe Kamar
+                                <i class="fa fa-asterisk"></i> Reservasi List
                             </li>
                         </ol>
                         
@@ -63,8 +63,6 @@
                             } else {
                         ?>
 
-                        <a href="<?php echo $baseUrl; ?>Admin/tipekamar/add" class="btn btn-default"><i class="fa fa-plus"></i> Tambah Kamar</a>
-                        <br />
                         <br />
                         <table class="table table-striped" style="border-top:1px solid #dfdfdf;">
                             <thead>
@@ -90,7 +88,7 @@
                                     <td><?php echo $s['description']; ?></td>
                                     <td><?php echo $s['harga']; ?></td>
                                     <td><?php echo $s['stok']; ?></td>
-                                    <td><a href="<?php echo $baseUrl ?>Machine/record/?t=del_fas&id=<?php echo $s['id_reservasi']; ?>" class="btn btn-primary btn-xs" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Tipe Kamar ini?')"><i class="fa fa-remove"></i> Delete</a>&nbsp;<a href="<?php echo $baseUrl; ?>Admin/tipekamar/edit/<?php echo $s['id_reservasi']; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</a></td>
+                                    <td><a href="<?php echo $baseUrl ?>Machine/record/?t=del_fas&id=<?php echo $s['id_reservasi']; ?>" class="btn btn-primary btn-xs" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Tipe Kamar ini?')"><i class="fa fa-remove"></i> Delete</a></td>
                                 </tr>
                             <?php $no++; } ?>
                             </tbody>
