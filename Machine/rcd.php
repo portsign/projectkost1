@@ -334,6 +334,11 @@ if (isset($_GET['t']))
         mysqli_query($connecDB, "DELETE FROM fasilitas WHERE id_fasilitas = '$id'");
         header('Location: ../../Admin/fasilitas');
     }
+    if ($_GET['t']=='del_bok') {
+        $id = $_GET['id'];
+        mysqli_query($connecDB, "DELETE FROM boking WHERE id_boking = '$id'");
+        header('Location: ../../Admin/order');
+    }
 }
 //Fasilitas END ---------------------------------------------------------------------------------------------------
 
@@ -665,4 +670,25 @@ if (isset($_POST['changePasswordAdmin'])) {
 }
 
 // GANTI PASSWORD ADMIN END --------------------------------------------------------------------------------------
+
+// ORDER FORM 1 --------------------------------------------------------------------------------------------------
+
+if (isset($_POST['submitOrder'])) {
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $no_telp = $_POST['no_telp'];
+    $alamat = $_POST['alamat'];
+    $catatan = $_POST['catatan'];
+    session_start();
+    $sess = session_id();
+    $_SESSION['email'] = $email;
+
+    mysqli_query($connecDB, "INSERT INTO boking (nama_lengkap, session_id, email, no_telp, alamat, catatan, created) 
+                             VALUES ('$nama','$sess','$email','$no_telp','$alamat','$catatan',NOW())");
+    header('Location: ../tipekamar/order/3/3');
+
+}
+
+// ORDER FORM 1 END ----------------------------------------------------------------------------------------------
+
 ?>

@@ -67,28 +67,28 @@
                         <table class="table table-striped" style="border-top:1px solid #dfdfdf;">
                             <thead>
                                 <th>No</th>
-                                <th>Thumb</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Harga</th>
-                                <th>Stok</th>
+                                <th>Nama Lengkap</th>
+                                <th>Email</th>
+                                <th>No Telepon</th>
+                                <th>alamat</th>
+                                <th>Catatan</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
 
                             <?php 
-                                $showFas = mysqli_query($connecDB, "SELECT * FROM reservasi ORDER BY id_reservasi DESC");
+                                $showFas = mysqli_query($connecDB, "SELECT * FROM boking ORDER BY id_boking DESC");
                                 $no = 1;
                                 while($s = mysqli_fetch_array($showFas)) {
                             ?>
                                 <tr>
                                     <td><?php echo $no; ?></td>
-                                    <td><img src="<?php echo $baseUrl.$s['thumb']; ?>" width="80" /></td>
-                                    <td><?php echo $s['title']; ?></td>
-                                    <td><?php echo $s['description']; ?></td>
-                                    <td><?php echo $s['harga']; ?></td>
-                                    <td><?php echo $s['stok']; ?></td>
-                                    <td><a href="<?php echo $baseUrl ?>Machine/record/?t=del_fas&id=<?php echo $s['id_reservasi']; ?>" class="btn btn-primary btn-xs" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Tipe Kamar ini?')"><i class="fa fa-remove"></i> Delete</a></td>
+                                    <td><?= $s['nama_lengkap'] ?></td>
+                                    <td><?php echo $s['email']; ?></td>
+                                    <td><?php echo $s['no_telp']; ?></td>
+                                    <td><?php echo $s['alamat']; ?></td>
+                                    <td><?php echo $s['catatan']; ?></td>
+                                    <td><a href="<?php echo $baseUrl ?>Machine/record/?t=del_bok&id=<?php echo $s['id_boking']; ?>" class="btn btn-primary btn-xs" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Bokingan ini?')"><i class="fa fa-remove"></i> Delete</a></td>
                                 </tr>
                             <?php $no++; } ?>
                             </tbody>

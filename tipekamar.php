@@ -34,21 +34,83 @@ include('navbar.php');
             <br />
             <br />
             <h3>Pengisian Data Diri</h3>
-            <form>
+            <form action="<?= $baseUrl ?>Machine/record" method="POST">
                 Nama Lengkap Anda
                 <input type="text" name="nama" class="form-control" style="width:300px" />
                 Email
-                <input type="text" name="nama" class="form-control" style="width:300px" />
+                <input type="email" name="email" class="form-control" style="width:300px" />
                 No Telepon / HP
-                <input type="text" name="nama" class="form-control" style="width:300px" />
+                <input type="no Telepon" name="no_telp" class="form-control" style="width:300px" />
                 alamat
-                <input type="text" name="nama" class="form-control" style="width:300px" />
+                <input type="text" name="alamat" class="form-control" style="width:300px" />
                 Catatan
                 <textarea name="catatan" class="form-control" style="width:450px" rows="5" ></textarea><br />
                 <input type="submit" name="submitOrder" class="btn btn-success" value="Lanjut ke pembayaran" />
             </form>
 
             <?php
+            } else if ($_GET['step']=='3') {
+            ?>
+
+            <?php 
+
+            session_start();
+            $getEmail = $_SESSION['email'];
+
+            $showData = mysqli_query($connecDB, "SELECT * FROM boking WHERE email = '$getEmail' ");
+            $s = mysqli_fetch_array($showData);
+            ?>
+
+            <h3>Detail Reservasi</h3>
+            <table class="table table-striped">
+                <tr>
+                    <td>Nama Lengkap</td>
+                    <td>:</td>
+                    <td><?= $s['nama_lengkap'] ?></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>:</td>
+                    <td><a href="mailto:<?= $s['email'] ?>"><?= $s['email'] ?></a></td>
+                </tr>
+                <tr>
+                    <td>No telepon</td>
+                    <td>:</td>
+                    <td><?= $s['no_telp'] ?></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td>:</td>
+                    <td><?= $s['alamat'] ?></td>
+                </tr>
+                <tr>
+                    <td>Catatan</td>
+                    <td>:</td>
+                    <td><?= $s['catatan'] ?></td>
+                </tr>
+            </table>
+            <a href="<?= $baseUrl ?>tipekamar/order/3/4" class="btn btn-success">Lanjut Ke Proses Pembayaran</a>
+            <?php
+            } else if ($_GET['step']=='4') {
+            ?>
+            <br />
+            <div class="alert alert-success" role="alert">
+              <a href="#" class="alert-link">Pemesanan dan harga untuk tomy telah dikonfirmasi.<br />
+            Segera selesaikan pembayaran untuk menghindari pembatalan oleh maska</a>
+            </div>
+            <br />
+            <br />
+            <p>
+                Transfer (melalui ATM/Internet Banking/SMS Banking) ditujukan ke bank berikut:
+                <br />
+                <br />
+                <img src="<?= $baseUrl ?>images/mandiri.png" width="100" />
+                <br /><br />No Rekening XXXXXXXXX
+                <br />A/N : Tomy<br />
+                Setelah Anda membayar Uang DP setengah Harga, Kami akan segera menghubungi Anda.
+            </p>
+            <a href="<?= $baseUrl ?>" class="btn btn-primary" >Kembali ke Halaman Home</a>
+            <?php    
             }
         } else {
         ?>
